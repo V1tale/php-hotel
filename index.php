@@ -1,45 +1,4 @@
-<?php  
-    $hotels = [
 
-        [
-            'name' => 'Hotel Belvedere',
-            'description' => 'Hotel Belvedere Descrizione',
-            'parking' => true,
-            'vote' => 4,
-            'distance_to_center' => 10.4
-        ],
-        [
-            'name' => 'Hotel Futuro',
-            'description' => 'Hotel Futuro Descrizione',
-            'parking' => true,
-            'vote' => 2,
-            'distance_to_center' => 2
-        ],
-        [
-            'name' => 'Hotel Rivamare',
-            'description' => 'Hotel Rivamare Descrizione',
-            'parking' => false,
-            'vote' => 1,
-            'distance_to_center' => 1
-        ],
-        [
-            'name' => 'Hotel Bellavista',
-            'description' => 'Hotel Bellavista Descrizione',
-            'parking' => false,
-            'vote' => 5,
-            'distance_to_center' => 5.5
-        ],
-        [
-            'name' => 'Hotel Milano',
-            'description' => 'Hotel Milano Descrizione',
-            'parking' => true,
-            'vote' => 2,
-            'distance_to_center' => 50
-        ],
-
-    ];
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,44 +13,22 @@
     <header></header>
     <main>
         <div class="container">
-        <table class="table table-dark">
-  <thead>
-    <tr>
-      <th scope="col">Nome Hotel</th>
-      <th scope="col">Descrizione</th>
-      <th scope="col">Parcheggio</th>
-      <th scope="col">Distanza dal centro</th>
-      <th scope="col">Voto</th>
-    </tr>
-  </thead>
-  <tbody>
-      <?php for ($i=0; $i < count($hotels); $i++) {
-          $thisHotel = $hotels[$i]; ?>
-          <tr>
-            <td>
-             <?php echo $thisHotel["name"] ?>
-            </td>
-            <td>
-             <?php echo $thisHotel["description"] ?>
-            </td>
-            <td>
-            <?php if ($thisHotel["parking"] == true) {                   
-                 echo "Si";
-            }else {
-                echo "no";
-            } ?>
-            </td>
-            <td>
-             <?php echo $thisHotel["distance_to_center"] ?>
-            </td>
-            <td>
-             <?php echo $thisHotel["vote"] ?>
-            </td>
-        </tr>
-      <?php  } ?>
-  </tbody>
-</table>
-        </div>
+       <form action="resp.php" method="GET">
+        <label for="parking">Filtra in base alla disponibilità di parcheggio</label>
+        <select name="parking" id="parking">
+            <option value="false">No</option>
+            <option value="true">Si</option>
+        </select>
+        <label for="vote">Filtra in base al voto</label>
+        <select name="vote" id="vote">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <button>Find</button>
+       </form>
     </main>
 </body>
 </html>
