@@ -38,6 +38,7 @@
         ],
 
     ];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,6 +51,47 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 </head>
 <body>
-    
+    <header></header>
+    <main>
+        <div class="container">
+        <table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Nome Hotel</th>
+      <th scope="col">Descrizione</th>
+      <th scope="col">Parcheggio</th>
+      <th scope="col">Distanza dal centro</th>
+      <th scope="col">Voto</th>
+    </tr>
+  </thead>
+  <tbody>
+      <?php for ($i=0; $i < count($hotels); $i++) {
+          $thisHotel = $hotels[$i]; ?>
+          <tr>
+            <td>
+             <?php echo $thisHotel["name"] ?>
+            </td>
+            <td>
+             <?php echo $thisHotel["description"] ?>
+            </td>
+            <td>
+            <?php if ($thisHotel["parking"] == true) {                   
+                 echo "Si";
+            }else {
+                echo "no";
+            } ?>
+            </td>
+            <td>
+             <?php echo $thisHotel["distance_to_center"] ?>
+            </td>
+            <td>
+             <?php echo $thisHotel["vote"] ?>
+            </td>
+        </tr>
+      <?php  } ?>
+  </tbody>
+</table>
+        </div>
+    </main>
 </body>
 </html>
